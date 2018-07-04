@@ -5,11 +5,13 @@ import { RecipeItemComponent } from './recipe-list/recipe-item/recipe-item.compo
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { RecipesComponent } from './recipes.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    BrowserModule
+    BrowserModule,
+    SharedModule
   ],
   declarations: [RecipeDetailsComponent, RecipeItemComponent, RecipeListComponent, RecipesComponent],
   exports: [RecipesComponent]

@@ -3,17 +3,19 @@ import { CommonModule } from '@angular/common';
 
 import { Ingredient } from './ingredient.model';
 import { BrowserModule } from '@angular/platform-browser';
+import { DropdownDirective } from '../shared/dropdown.directive';
 
 @NgModule({
   imports: [
     CommonModule,
-    BrowserModule
+    BrowserModule,
   ],
   exports: [
     CommonModule,
-    BrowserModule
+    BrowserModule,
+    DropdownDirective
   ],
-  declarations: []
+  declarations: [DropdownDirective]
 })
 export class SharedModule { }
 
