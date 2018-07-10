@@ -6,6 +6,8 @@ import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { RecipesComponent } from './recipes.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { SharedModule } from '../shared/shared.module';
+import { RecipeEmptyComponent } from './recipe-empty/recipe-empty.component';
+import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 
 @NgModule({
   imports: [
@@ -13,7 +15,14 @@ import { SharedModule } from '../shared/shared.module';
     BrowserModule,
     SharedModule
   ],
-  declarations: [RecipeDetailsComponent, RecipeItemComponent, RecipeListComponent, RecipesComponent],
+  declarations: [
+    RecipeDetailsComponent,
+    RecipeItemComponent,
+    RecipeListComponent,
+    RecipesComponent,
+    RecipeEmptyComponent,
+    RecipeEditComponent
+  ],
   exports: [RecipesComponent]
 })
 export class RecipesModule { }

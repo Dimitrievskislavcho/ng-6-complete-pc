@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '../../node_modules/@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,12 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   route = 'recipes';
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   //  ui mehtods
-  setRoute($event: { routeName: string }) {
-    this.route = $event.routeName;
-  }
 
   //  hooks
   ngOnInit() {}
