@@ -23,6 +23,5 @@ export class RecipesComponent implements OnInit {
         this.selectedRecipe = null;
       }
     });
-    this.recipesService.selectedRecipe.subscribe((recipe: Recipe) => this.selectedRecipe = recipe);
   }
 }
