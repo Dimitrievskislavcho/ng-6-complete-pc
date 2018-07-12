@@ -8,6 +8,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { SharedModule } from '../shared/shared.module';
 import { RecipeEmptyComponent } from './recipe-empty/recipe-empty.component';
 import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
+import { RecipesService } from './recipes.service';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
     RecipeEmptyComponent,
     RecipeEditComponent
   ],
-  exports: [RecipesComponent]
+  exports: [RecipesComponent],
+  providers: [RecipesService]
 })
 export class RecipesModule { }

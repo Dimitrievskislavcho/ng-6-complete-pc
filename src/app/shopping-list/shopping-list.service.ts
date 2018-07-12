@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 @Injectable()
 export class ShoppingListService {
   public ingredientRefresher = new Subject<any>();
+  public startedEditing = new Subject<any>();
 
   private ingredients: Array<any> = [
     new Ingredient('apples', 4),
@@ -22,6 +23,18 @@ export class ShoppingListService {
   }
   addIngredientsToShoppingList(ingredients: Array<Ingredient>) {
     this.ingredients.push(...ingredients);
+    this.ingredientRefresher.next();
+  }
+  getIngredient(index) {
+    const { name, amount } = this.ingredients[index];
+    return { name, amount };
+  }
+  saveIngredient(index, ingredient) {
+    this.ingredients[index] = ingredient;
+    this.ingredientRefresher.next();
+  }
+  deleteIngredient(index: number) {
+    this.ingredients.splice(index, 1);
     this.ingredientRefresher.next();
   }
 }
