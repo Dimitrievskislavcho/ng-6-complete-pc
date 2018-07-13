@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { DropdownDirective } from '../shared/dropdown.directive';
 import { RouterModule } from '../../../node_modules/@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpModule } from '../../../node_modules/@angular/http';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     BrowserModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule
   ],
   exports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     DropdownDirective,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule
   ],
   declarations: [DropdownDirective]
 })

@@ -3,7 +3,8 @@ import { Recipe } from './recipe.model';
 import { Ingredient } from '../shared/shared.module';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
 import { Subject } from '../../../node_modules/rxjs';
-
+import { Http } from '@angular/http';
+import { map } from 'rxjs/operators';
 @Injectable()
 export class RecipesService {
   public onRecipesRefresh: Subject<any> = new Subject<any>();
@@ -29,8 +30,15 @@ export class RecipesService {
     )
   ];
 
-  constructor(private shoppingListService: ShoppingListService) {}
+  constructor(
+    private http: Http,
+    private shoppingListService: ShoppingListService
+  ) {}
 
+  putRecipes(recipes: Array<Recipe>) {
+    this.recipes = recipes;
+    this.onRecipesRefresh.next();
+  }
   getRecipes(): Array<Recipe> {
     return this.recipes.slice();
   }
@@ -51,5 +59,32 @@ export class RecipesService {
   deleteRecipe(index: number) {
     this.recipes.splice(index, 1);
     this.onRecipesRefresh.next();
+  }
+  saveRecipes() {
+    const apiUrl = 'https://ng-6-complete.firebaseio.com/recipes.json';
+    return this.http.put(apiUrl, this.recipes).pipe(
+      map((response: Response) => response.json())
+    );
+  }
+  fetchRecipes() {
+    const apiUrl = 'https://ng-6-complete.firebaseio.com/recipes.json';
+    return this
+            .http
+            .get(apiUrl)
+            .pipe(
+              map((response: Response) => response.json()),
+              map((recipes: Array<Recipe>) => {
+                return recipes.map(recipe => {
+                  if (!recipe['ingredients']) {
+                    recipe['ingredients'] = [];
+                  }
+                  return recipe;
+                });
+              })
+            )
+            .subscribe(
+              (recipes: Array<Recipe>) => this.putRecipes(recipes),
+              error => console.log(error)
+            );
   }
 }
