@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '../../node_modules/@angular/router';
+import * as firebase from 'firebase';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,5 +14,10 @@ export class AppComponent implements OnInit {
   //  ui mehtods
 
   //  hooks
-  ngOnInit() {}
+  ngOnInit() {
+    firebase.initializeApp({
+        apiKey: 'AIzaSyBmd4ACjTtcam_S1rh9qS-LHqHnn9l002w',
+        authDomain: 'ng-6-complete.firebaseapp.com',
+    });
+  }
 }

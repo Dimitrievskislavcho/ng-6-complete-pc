@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipesService } from '../../recipes/recipes.service';
+import { AuthService } from '../../auth/auth.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -7,7 +8,8 @@ import { RecipesService } from '../../recipes/recipes.service';
 })
 export class HeaderComponent implements OnInit {
   constructor(
-    private recipesService: RecipesService
+    private recipesService: RecipesService,
+    private authService: AuthService
   ) { }
 
   //  ui methods
@@ -25,5 +27,12 @@ export class HeaderComponent implements OnInit {
     this
       .recipesService
       .fetchRecipes();
+  }
+  isAuthenticated() {
+    return this.authService.isAuthenticated();
+  }
+
+  logout() {
+    this.authService.signoutUser();
   }
 }
